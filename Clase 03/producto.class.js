@@ -24,7 +24,27 @@ class Producto {
 		return (this.precio / 1.21).toFixed(2)
 	}
 	//3) Metodos de Clase (o Metodos Estáticos)
-	static parse(){
+	static parse(data){
 		console.log("Ahora deberia convertir Object en Producto")
+		data = JSON.parse(data)
+
+		if( data instanceof Array ){ //<-- Hay muchos Object
+
+			let productos = new Array()
+
+			data.forEach(item => {
+				let producto = new Producto(item.nombre, item.precio, item.stock, item.disponible)
+
+				productos.push( producto )
+			})
+
+			return productos
+
+		} else if( data instanceof Object ){ //<-- Hay un solo Object
+
+		} else { //<-- No hay ningún Object (No sirve nada...)
+
+		}
+
 	}
 }
