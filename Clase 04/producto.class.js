@@ -1,9 +1,14 @@
 class Producto {
 	//1) Constructor
-	constructor(n, p, s, d){
+	constructor(id, n, p, s, c, i, m, pr, d = false){
+		this.id = id
 		this.nombre = n
 		this.precio = p
 		this.stock = s
+		this.categoria = c
+		this.imagen = i
+		this.marca = m
+		this.presentacion = pr
 		this.disponible = d
 	}
 	//2) Metodos de Instancia
@@ -33,7 +38,18 @@ class Producto {
 			let productos = new Array()
 
 			data.forEach(item => {
-				let producto = new Producto(item.nombre, item.precio, item.stock, item.disponible)
+				//let producto = new Producto(item.nombre, item.precio, item.stock, item.disponible)
+				
+				let producto = new Producto(
+					item.idProducto,
+					item.Nombre,
+					item.Precio,
+					item.Stock,
+					item.Categoria,
+					item.Imagen,
+					item.Marca,
+					item.Presentacion
+				)
 
 				productos.push( producto )
 			})
@@ -42,7 +58,17 @@ class Producto {
 
 		} else if( data instanceof Object ){ //<-- Hay un solo Object
 			
-			let producto = new Producto(data.nombre, data.precio, data.stock, data.disponible)
+			//let producto = new Producto(data.nombre, data.precio, data.stock, data.disponible)
+			let producto = new Producto(
+				item.idProducto,
+					data.Nombre,
+					data.Precio,
+					data.Stock,
+					data.Categoria,
+					data.Imagen,
+					data.Marca,
+					data.Presentacion
+			)
 			
 			return producto
 
