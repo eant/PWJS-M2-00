@@ -27,17 +27,32 @@ class Pelicula {
 			//El "this" es la pelicula!
 			console.log(this)
 			
-			let reproductor = document.querySelector("#playMovie")
+			if( window.auth2.currentUser.get().isSignedIn() ) {
+				//Chinverwencha!
+				let reproductor = document.querySelector("#playMovie")
 
-			reproductor.querySelector("#titulo").innerText = `${this.Titulo} (${this.Estreno})`
-			reproductor.querySelector("#descripcion").innerText = this.Descripcion
-			reproductor.querySelector("#imagen").src = this.Poster
-			reproductor.querySelector("iframe").src = this.Trailer
+				reproductor.querySelector("#titulo").innerText = `${this.Titulo} (${this.Estreno})`
+				reproductor.querySelector("#descripcion").innerText = this.Descripcion
+				reproductor.querySelector("#imagen").src = this.Poster
+				reproductor.querySelector("iframe").src = this.Trailer
 
-			window.scroll({
-				behavior : "smooth",
-				top : reproductor.offsetTop
-			})
+				window.scroll({
+					behavior : "smooth",
+					top : reproductor.offsetTop
+				})
+
+			} else {
+				//Logeate... papa frita!
+
+				auth2.signIn().then(function(){
+					
+					let usuario = auth2.currentUser.get().getBasicProfile()
+
+					alert(`Bienvenido ${usuario.getGivenName()}`)
+
+				})
+
+			}
 
 			console.log(reproductor)
 		}

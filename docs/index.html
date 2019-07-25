@@ -51,8 +51,24 @@
 				</div>
 			</div>
 		</div>
+		<script src="https://apis.google.com/js/api:client.js"></script>
 		<script src="js/pelicula.class.js"></script>
 		<script>
+			//////////// LOGIN CON GOOGLE ////////////
+
+			gapi.load("auth2", function(){
+
+				window.auth2 = gapi.auth2.init({
+					client_id : "765263785260-34v5odkdu8ko58rdosbahbbjnq3t3aaq.apps.googleusercontent.com",
+					cookiepolicy : "single_host_origin"
+				})
+
+			})
+
+
+			////////// FIN LOGIN CON GOOGLE //////////
+
+
 			/*
 			let unaPelicula = new Pelicula("Iron Man", 2008, "El Hombre de Hierro", "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_.jpg", "https://www.youtube.com/watch?v=8hYlB38asDY")
 			
