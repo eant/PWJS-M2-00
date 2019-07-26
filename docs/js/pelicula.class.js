@@ -54,7 +54,6 @@ class Pelicula {
 
 			}
 
-			console.log(reproductor)
 		}
 
 		//elemento.querySelector("a").onclick = Reproductor.bind(this)
