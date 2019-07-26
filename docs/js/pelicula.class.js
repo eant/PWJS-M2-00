@@ -45,7 +45,15 @@ class Pelicula {
 					
 					let usuario = auth2.currentUser.get().getBasicProfile()
 
-					alert(`Bienvenido ${usuario.getGivenName()}`)
+					//alert(`Bienvenido ${usuario.getGivenName()}`)
+					document.querySelector("#user-data").classList.remove("hide")
+
+					document.querySelector("#user-data strong").innerText = usuario.getGivenName()
+					
+					document.querySelector("#user-data button").onclick = function(){
+						auth2.signOut()
+						document.querySelector("#user-data").classList.add("hide")
+					}
 
 				})
 
@@ -56,7 +64,7 @@ class Pelicula {
 		//elemento.querySelector("a").onclick = Reproductor.bind(this)
 
 		//4) Desocultar el elemento clonado
-			elemento.classList.remove("hide")
+		elemento.classList.remove("hide")
 
 		//5) Anexar el elemento en el contenedor (padre)
 		document.querySelector("#peliculas").appendChild(elemento)
