@@ -23,9 +23,6 @@ class Pelicula {
 		elemento.querySelector("a").onclick = (e) => {
 			//Desactivar el hipervinculo
 			e.preventDefault()
-
-			//El "this" es la pelicula!
-			console.log(this)
 			
 			if( window.auth2.currentUser.get().isSignedIn() ) {
 				//Chinverwencha!
@@ -64,12 +61,9 @@ class Pelicula {
 		//5) Anexar el elemento en el contenedor (padre)
 		document.querySelector("#peliculas").appendChild(elemento)
 
-		console.log( elemento )
-		
 	}
 
 	static parse(data){
-		console.log("Ahora deberia convertir Object en Producto")
 		data = JSON.parse(data)
 
 		if( data instanceof Array ){ //<-- Hay muchos Object
